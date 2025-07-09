@@ -1,6 +1,9 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const consumersController = require("../controllers/consumers");
+const clientsController = require('../controllers/cleints');
+
+
+
 /**
  * @swagger
  * components:
@@ -23,16 +26,15 @@ const consumersController = require("../controllers/consumers");
  *         name: Ali
  *         email: ali@example.com
  */
-
 /**
  * @swagger
- * /api/consumers:
+ * /api/clients:
  *   get:
- *     summary: Get all consumers
- *     tags: [consumers]
+ *     summary: Get all clients
+ *     tags: [Clients]
  *     responses:
  *       200:
- *         description: List of all users
+ *         description: List of all clients
  *         content:
  *           application/json:
  *             schema:
@@ -40,21 +42,20 @@ const consumersController = require("../controllers/consumers");
  *               items:
  *                 $ref: '#/components/schemas/User'
  */
-
-router.get('/',consumersController.getAllConsumers);
+router.get('/',clientsController.getAllClients);
 /**
     * @swagger
-    * /api/consumers/{complaint_id}:
+    * /api/clients/{client_id}:
     *   get:
-    *     summary: Get consumer
-    *     tags: [consumers]
+    *     summary: Get client
+    *     tags: [Clients]
     *     parameters:
     *       - in: path
-    *         name: complaint_id
+    *         name: client_id
     *         required: true
     *         schema:
     *           type: string
-    *         description: The ID of the complaint to fetch
+    *         description: The ID of the client to fetch
     *     responses:
     *       200:
     *         description: Successfully fetched all data
@@ -63,14 +64,13 @@ router.get('/',consumersController.getAllConsumers);
     *       500:
     *         description: server error
 */
-
-router.get('/:complaint_id',consumersController.getConsumerById);
+router.get('/:client_id',clientsController.getClientById);
 /**
     * @swagger
-    * /api/consumers:
+    * /api/clients:
     *   post:
-    *     summary: add consumer
-    *     tags: [consumers]
+    *     summary: add client
+    *     tags: [Clients]
     *     requestBody:
     *       required: true
     *       content:
@@ -121,14 +121,13 @@ router.get('/:complaint_id',consumersController.getConsumerById);
     *       500:
     *         description: server error
 */
-router.post('/',consumersController.addConsumer);
-
+router.post('/',clientsController.addClient);
 /**
     * @swagger
-    * /api/consumers:
+    * /api/clients:
     *   put:
-    *     summary: edit consumer
-    *     tags: [consumers]
+    *     summary: edit client
+    *     tags: [Clients]
     *     requestBody:
     *       required: true
     *       content:
@@ -179,22 +178,20 @@ router.post('/',consumersController.addConsumer);
     *       500:
     *         description: server error
 */
-
-router.put('/',consumersController.editConsumer);
-
+router.put('/',clientsController.editClient);
 /**
     * @swagger
-    * /api/consumers/{complaint_id}:
+    * /api/clients/{client_id}:
     *   delete:
-    *     summary: delete consumer
-    *     tags: [consumers]
+    *     summary: delete client
+    *     tags: [Clients]
     *     parameters:
     *       - in: path
-    *         name: complaint_id
+    *         name: client_id
     *         required: true
     *         schema:
     *           type: string
-    *         description: The ID of the complaint to delete
+    *         description: The ID of the client to delete
     *     responses:
     *       200:
     *         description: Successfully fetched all data
@@ -203,7 +200,6 @@ router.put('/',consumersController.editConsumer);
     *       500:
     *         description: server error
 */
-
-router.delete('/:complaint_id',consumersController.deleteConsumer)
+router.delete('/:client_id',clientsController.deleteClient);
 
 module.exports = router;
